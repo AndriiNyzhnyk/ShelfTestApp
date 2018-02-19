@@ -1,4 +1,5 @@
 const request = require('request');
+const fs = require('fs');
 const secret = require('./secret');
 
 const config = {
@@ -18,6 +19,10 @@ request(config, (err, res, body) => {
 if (err) {
         console.error(err);
     } else {
-        console.log(body);
+        // console.log(body);
+        fs.writeFile("data.json", body, (error) => {
+            if(error) throw error;
+            console.log("recording is complete");
+        });
    }
 });
