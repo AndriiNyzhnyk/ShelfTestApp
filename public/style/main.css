@@ -24,6 +24,7 @@ html, body {
 }
 
 #send {
+    margin-top: 25px;
     font-size: 1em;
     padding: 5px;
 }

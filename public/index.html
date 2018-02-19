@@ -8,16 +8,14 @@
 <body>
     <h1 id="title">Знайди що тобі потрібно !</h1>
 
-    <form action="" method="">
-            <select size="1" id="place" required>
+    <form action="" method="" id="search">
+            <select size="1" name="place" id="place" required>
                 <option value="restaurant" name="qwer">Ресторан</option>
                 <option value="museum" name="qwer">Музей</option>
                 <option value="hotel" name="qwer">Готель</option>
             </select>
-            <br /><br />
 
             <p>Виберіть відстань :</p>
-
             <input type="radio" name="radius" class="itemR" id="v500" value="500" />
             <label for="v500">500 м</label>
 
@@ -30,8 +28,7 @@
             <input type="radio" name="radius" class="itemR" id="v10000" value="10000" />
             <label for="v10000">10000 м</label>
 
-
-            <br /><br />
+            <br />
             <input type="submit" value="Надіслати" id="send"/>
         </form>
 
