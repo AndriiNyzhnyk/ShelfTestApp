@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>App</title>
+    <link type="text/css" rel="stylesheet" href="/style/main.css">
 </head>
 <body>
-<h1>Test</h1>
+    <h1 id="title">Знайди що тобі потрібно !</h1>
+
+    <form action="" method="">
+            <select size="1" id="place" required>
+                <option value="restaurant" name="qwer">Ресторан</option>
+                <option value="museum" name="qwer">Музей</option>
+                <option value="hotel" name="qwer">Готель</option>
+            </select>
+            <br /><br />
+
+            <p>Виберіть відстань :</p>
+
+            <input type="radio" name="radius" class="itemR" id="v500" value="500" />
+            <label for="v500">500 м</label>
+
+            <input type="radio" name="radius" class="itemR" id="v1000" value="1000" />
+            <label for="v1000">1000 м</label>
+
+            <input type="radio" name="radius" class="itemR" id="v5000" value="5000" />
+            <label for="v5000">5000 м</label>
+
+            <input type="radio" name="radius" class="itemR" id="v10000" value="10000" />
+            <label for="v10000">10000 м</label>
+
+
+            <br /><br />
+            <input type="submit" value="Надіслати" id="send"/>
+        </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

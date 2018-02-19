@@ -1,0 +1,29 @@
+html, body {
+    margin: 0;
+    padding: 5px;
+    font-family: "Times New Roman", Arial;
+    font-size: 1.1em;
+}
+
+#title {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#place {
+    width: 200px;
+    height: 40px;
+}
+
+.itemR {
+    margin-left: 40px;
+}
+
+#v500 {
+    margin: 0 !important;
+}
+
+#send {
+    font-size: 1em;
+    padding: 5px;
+}
