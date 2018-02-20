@@ -54,7 +54,7 @@ module.exports.setConfigQuery = (query, lat, lng, radius) => {
                 client_secret: `${secret.clientSecret}`,
                 ll: `${lat},${lng}`,
                 query: `${query}`,
-                radius: `${radius + 80000}`,
+                radius: `${radius}`,
                 v: '20170801',
                 limit: 20
         }
