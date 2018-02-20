@@ -56,7 +56,7 @@ module.exports.setConfigQuery = (query, lat, lng, radius) => {
                 query: `${query}`,
                 radius: `${radius}`,
                 v: '20170801',
-                limit: 20
+                limit: 50
         }
     };
 
