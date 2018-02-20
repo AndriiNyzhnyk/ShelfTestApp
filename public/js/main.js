@@ -55,7 +55,7 @@ $(document).ready( () => {
             data: data,
             success: function(text) {
                 setTimeout(() => {
-                    let url = "http://localhost:3000/download";
+                    let url = "/download";
                     $( location ).attr("href", url);
                 }, 1500);
 
