@@ -1,4 +1,4 @@
 .idea/
 node_modules/
 foursquare/secret.js
-foursquare/data.json
+data.json

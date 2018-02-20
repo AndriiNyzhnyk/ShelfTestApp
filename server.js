@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fourSquare = require('./foursquare');
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const app = express();
 
@@ -12,7 +13,10 @@ app.get('/', (req, res) => {
 
 app.post('/search', urlEncodedParser, (req, res) => {
     if(!req.body) return res.sendStatus(400);
-    console.log(req.body);
+    // console.log(req.body);
+    const body = req.body;
+    console.log(body);
+    fourSquare.setConfigQuery(body.place, body.lat, body.lng, body.radius);
 });
 
 // Обробник 404 помилки
