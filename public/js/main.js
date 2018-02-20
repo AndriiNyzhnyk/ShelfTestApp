@@ -7,6 +7,7 @@ $(document).ready( () => {
         for (let i = 0; i < radiusItems.length; i++) {
             if (radiusItems[i].type === 'radio' && radiusItems[i].checked) {
                 radius = radiusItems[i].value;
+                break;
             }
         }
         init(place, radius);
@@ -51,7 +52,14 @@ $(document).ready( () => {
         $.ajax({
             type: "POST",
             url: "/search",
-            data: data
+            data: data,
+            success: function(text) {
+                setTimeout(() => {
+                    let url = "http://localhost:3000/download";
+                    $( location ).attr("href", url);
+                }, 1500);
+
+            }
         });
     }
 });

@@ -11,12 +11,17 @@ app.get('/', (req, res) => {
     sendFile('/index.html', res);
 });
 
+app.get('/download', (req, res) => {
+    res.download('file.csv');
+});
+
 app.post('/search', urlEncodedParser, (req, res) => {
     if(!req.body) return res.sendStatus(400);
     // console.log(req.body);
     const body = req.body;
     console.log(body);
     fourSquare.setConfigQuery(body.place, body.lat, body.lng, body.radius);
+    res.send('ok');
 });
 
 // Обробник 404 помилки
