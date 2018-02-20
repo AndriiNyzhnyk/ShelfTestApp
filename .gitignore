@@ -2,3 +2,4 @@
 node_modules/
 foursquare/secret.js
 data.json
+file.csv
