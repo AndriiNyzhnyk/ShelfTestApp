@@ -15,7 +15,7 @@ function filterData(body) {
     if(!body) return console.log('Not Data');
 
     let filterList = [];
-    const data = JSON.parse(body);
+    let data = JSON.parse(body);
 
     for(let i = 0; i < data.response.groups[0].items.length; i++) {
         let name = data.response.groups[0].items[i].venue.name;
@@ -46,7 +46,7 @@ function createCsv(list) {
 }
 
 module.exports.setConfigQuery = (query, lat, lng, radius) => {
-    const config = {
+    let config = {
         url: 'https://api.foursquare.com/v2/venues/explore',
         method: 'GET',
         qs: {

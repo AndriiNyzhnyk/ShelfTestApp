@@ -1,8 +1,8 @@
 $(document).ready( () => {
     $('#search').submit( (e) => {
         e.preventDefault();
-        const place = $('#place').val();
-        const radiusItems = $('.itemR');
+        let place = $('#place').val();
+        let radiusItems = $('.itemR');
         let radius;
         for (let i = 0; i < radiusItems.length; i++) {
             if (radiusItems[i].type === 'radio' && radiusItems[i].checked) {
@@ -15,8 +15,8 @@ $(document).ready( () => {
 
     async function init(place, radius) {
         try {
-            const position = await getPosition();
-            const data = await concatValue(position, place, radius);
+            let position = await getPosition();
+            let data = await concatValue(position, place, radius);
             sendData(data);
         } catch(e) {
             console.error(e);
@@ -26,8 +26,8 @@ $(document).ready( () => {
     function getPosition() {
         return new Promise(resolve => {
             navigator.geolocation.getCurrentPosition( position => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
+                let lat = position.coords.latitude;
+                let lng = position.coords.longitude;
                 resolve({lat,lng});
             });
         });
@@ -37,7 +37,7 @@ $(document).ready( () => {
         return new Promise(resolve => {
             let lat = pos.lat;
             let lng = pos.lng;
-            const data = {
+            let data = {
                 place,
                 radius,
                 lat,

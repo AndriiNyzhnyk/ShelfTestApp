@@ -1,4 +1,4 @@
-const serverless = require('serverless-http');
+// const serverless = require('serverless-http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const fourSquare = require('./foursquare');
@@ -40,9 +40,9 @@ app.use((err, req, res, next) => {
     res.send('500');
 });
 
-// app.listen(app.get('port'), () => {
-//     console.log( 'Express запущенний на http://localhost:' +
-//         app.get('port') + '; нажміть Ctrl+C для завершення.' );
-// });
+app.listen(app.get('port'), () => {
+    console.log( 'Express запущенний на http://localhost:' +
+        app.get('port') + '; нажміть Ctrl+C для завершення.' );
+});
 
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
