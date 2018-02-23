@@ -41,8 +41,7 @@ function createCsv(list) {
     let fields = ['name', 'city', 'address', 'lat', 'lng'];
     let csv = json2csv({ data: list, fields: fields });
 
-    fs.writeFileSync("file.csv", "sep =,\n");
-    fs.appendFileSync('file.csv', csv);
+    module.exports.file = 'sep =,\n' + csv;
 }
 
 module.exports.setConfigQuery = (query, lat, lng, radius) => {

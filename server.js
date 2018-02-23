@@ -9,17 +9,18 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-    sendFile('/index.html', res);
+    res.sendFile('/index.html');
 });
 
 app.get('/download', (req, res) => {
-    res.download('file.csv');
+    res.attachment('data.csv');
+    res.send(fourSquare.file);
 });
 
 app.post('/search', urlEncodedParser, (req, res) => {
     if(!req.body) return res.sendStatus(400);
     // console.log(req.body);
-    const body = req.body;
+    let body = req.body;
     fourSquare.setConfigQuery(body.place, body.lat, body.lng, body.radius);
     res.send('ok');
 });
