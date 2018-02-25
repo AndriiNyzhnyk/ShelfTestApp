@@ -18,11 +18,11 @@ function filterData(body) {
     let data = JSON.parse(body);
 
     for(let i = 0; i < data.response.groups[0].items.length; i++) {
-        let name = data.response.groups[0].items[i].venue.name;
-        let city = data.response.groups[0].items[i].venue.location.city;
-        let address = data.response.groups[0].items[i].venue.location.address;
-        let lat = data.response.groups[0].items[i].venue.location.lat;
-        let lng = data.response.groups[0].items[i].venue.location.lng;
+        let name = data.response.groups[0].items[i].venue.name || 'Немає інформації';
+        let city = data.response.groups[0].items[i].venue.location.city || 'Немає інформації';
+        let address = data.response.groups[0].items[i].venue.location.address || 'Немає інформації';
+        let lat = data.response.groups[0].items[i].venue.location.lat || 'Немає інформації';
+        let lng = data.response.groups[0].items[i].venue.location.lng || 'Немає інформації';
 
         let item = {
             name,
