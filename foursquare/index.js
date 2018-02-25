@@ -3,12 +3,16 @@ const secret = require('./secret');
 const json2csv = require('json2csv');
 
 async function initQuery(res, query, lat, lng, radius) {
-    let body = await setConfigQuery(query, lat, lng, radius);
-    let filterList = await filterData(body);
-    let data = await createCsv(filterList);
-    let status = await sendDataToUser(res, data);
+    try {
+        let body = await setConfigQuery(query, lat, lng, radius);
+        let filterList = await filterData(body);
+        let data = await createCsv(filterList);
+        let status = await sendDataToUser(res, data);
 
-    if(status === 'ok') console.log('data send to client');
+        if(status === 'ok') console.log('data send to client');
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 function setConfigQuery(query, lat, lng, radius) {
