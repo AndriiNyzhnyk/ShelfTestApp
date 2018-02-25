@@ -12,17 +12,11 @@ app.get('/', (req, res) => {
     res.sendFile('/index.html');
 });
 
-app.get('/download', (req, res) => {
-    res.attachment('data.csv');
-    res.send(fourSquare.file);
-});
-
 app.post('/search', urlEncodedParser, (req, res) => {
     if(!req.body) return res.sendStatus(400);
-    // console.log(req.body);
+
     let body = req.body;
-    fourSquare.setConfigQuery(body.place, body.lat, body.lng, body.radius);
-    res.send('ok');
+    fourSquare.initQuery(res, body.place, body.lat, body.lng, body.radius)
 });
 
 // Обробник 404 помилки

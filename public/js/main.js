@@ -52,14 +52,10 @@ $(document).ready( () => {
         $.ajax({
             type: "POST",
             url: "/search",
-            data: data,
-            success: function(text) {
-                setTimeout(() => {
-                    let url = "/download";
-                    $( location ).attr("href", url);
-                }, 1500);
-
-            }
+            data: data
+            // success: function(data) {
+            //     console.log(data);
+            // }
         });
     }
 });
