@@ -43,7 +43,7 @@ $(document).ready( () => {
                 lat,
                 lng
             };
-            console.log(data);
+            // console.log(data);
             resolve(data);
         });
     }
@@ -52,10 +52,14 @@ $(document).ready( () => {
         $.ajax({
             type: "POST",
             url: "/search",
-            data: data
-            // success: function(data) {
-            //     console.log(data);
-            // }
+            data: data,
+            success: function(data) {
+                // console.log(data);
+                if(data === 'ok_redirect') {
+                    let url = '/download';
+                    $( location ).attr("href", url);
+                }
+            }
         });
     }
 });

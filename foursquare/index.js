@@ -2,14 +2,14 @@ const request = require('request');
 const secret = require('./secret');
 const json2csv = require('json2csv');
 
-async function initQuery(res, query, lat, lng, radius) {
+let dataForUser;
+
+async function initQuery(query, lat, lng, radius) {
     try {
         let body = await setConfigQuery(query, lat, lng, radius);
         let filterList = await filterData(body);
-        let data = await createCsv(filterList);
-        let status = await sendDataToUser(res, data);
-
-        if(status === 'ok') console.log('data send to client');
+        dataForUser = await createCsv(filterList);
+        return 'ok_redirect';
     } catch(err) {
         console.error(err);
     }
@@ -79,13 +79,9 @@ function createCsv(list) {
     });
 }
 
-function sendDataToUser(res, data) {
-    return new Promise( (resolve, reject) => {
-        res.attachment('data.csv');
-        res.send(data);
-
-        resolve('ok');
-    });
+function getUserData() {
+    return dataForUser;
 }
 
 module.exports.initQuery = initQuery;
+module.exports.getUserData = getUserData;
