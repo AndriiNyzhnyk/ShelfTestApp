@@ -23,10 +23,8 @@ app.post('/search', urlEncodedParser, (req, res) => {
     let body = req.body;
     fourSquare.initQuery(body.place, body.lat, body.lng, body.radius)
         .then(value => {
-            res.send('ok_redirect');
+            res.send(value);
         });
-
-    // res.send('redirect');
 });
 
 // Обробник 404 помилки
