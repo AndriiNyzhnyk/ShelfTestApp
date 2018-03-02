@@ -30,16 +30,14 @@ app.post('/search', urlEncodedParser, (req, res) => {
 // Обробник 404 помилки
 app.use((req, res, next) => {
     res.status(404);
-    res.type('text/plain');
-    res.send('404');
+    res.sendFile(__dirname + '/public/p404.html');
 });
 
 // Обробник 500 помилки
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500);
-    res.type('text/plain');
-    res.send('500');
+    res.sendFile(__dirname + '/public/p500.html');
 });
 
 app.listen(app.get('port'), () => {
