@@ -12,9 +12,16 @@ app.get('/', (req, res) => {
     res.sendFile('/index.html');
 });
 
-app.get('/download', (req, res) => {
-    res.attachment('data.csv');
-    res.send(fourSquare.getUserData());
+app.get('/download/:id', (req, res) => {
+    let id = req.params['id'];
+
+    fourSquare.getUserData(id)
+        .then( (value) => {
+            res.attachment('data.csv');
+            res.send(value.data);
+        });
+
+
 });
 
 app.post('/search', urlEncodedParser, (req, res) => {

@@ -1,21 +1,35 @@
 const request = require('request');
 const secret = require('./secret');
 const json2csv = require('json2csv');
+const crypto = require('crypto');
 
-let dataForUser;
+let dataForUser = [];
+
+setInterval( () => {
+    autoDeleteItem();
+}, 60000);
+
 
 async function initQuery(query, lat, lng, radius) {
     try {
-        let body = await setConfigQuery(query, lat, lng, radius);
+        let body = await sendRequest(query, lat, lng, radius);
         let filterList = await filterData(body);
-        dataForUser = await createCsv(filterList);
-        return 'ok_redirect';
+        let data = await createCsv(filterList);
+        let id = await makeId();
+        dataForUser.push({
+            id,
+            data,
+            time: Date.now()
+        });
+
+        return 'ok_' + id;
+
     } catch(err) {
         console.error(err);
     }
 }
 
-function setConfigQuery(query, lat, lng, radius) {
+function sendRequest(query, lat, lng, radius) {
     return new Promise( (resolve, reject) => {
         let config = {
             url: 'https://api.foursquare.com/v2/venues/explore',
@@ -36,6 +50,7 @@ function setConfigQuery(query, lat, lng, radius) {
                 reject(err);
             } else {
                 resolve(body);
+
             }
         })
     });
@@ -79,8 +94,40 @@ function createCsv(list) {
     });
 }
 
-function getUserData() {
-    return dataForUser;
+function getUserData(id) {
+    return new Promise( (resolve, reject) => {
+        for (let i = 0; i < dataForUser.length; i++) {
+            if(dataForUser[i].id === id) {
+                resolve(dataForUser[i]);
+                dataForUser.splice(i, 1);
+                break;
+            }
+        }
+
+    });
+}
+
+function makeId() {
+    return new Promise( (resolve, reject) => {
+        crypto.randomBytes(5, (ex, buf) => {
+            if (ex) {
+                reject(ex);
+            }
+
+            resolve(buf.toString('hex'));
+
+        });
+    });
+
+}
+
+function autoDeleteItem() {
+    let timer = 3600 * 1000;
+    for (let i = 0; i < dataForUser.length; i++) {
+        if( (dataForUser[i].time + timer) > Date.now() ) {
+            dataForUser.splice(i, 1);
+        }
+    }
 }
 
 module.exports.initQuery = initQuery;

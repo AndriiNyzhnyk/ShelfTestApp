@@ -55,8 +55,9 @@ $(document).ready( () => {
             data: data,
             success: function(data) {
                 // console.log(data);
-                if(data === 'ok_redirect') {
-                    let url = '/download';
+                let arr = data.split('_');
+                if(arr[0] === 'ok' && arr[1] !== '') {
+                    let url = '/download/' + arr[1] ;
                     $( location ).attr("href", url);
                 }
             }
