@@ -28,3 +28,8 @@ html, body {
     font-size: 1em;
     padding: 5px;
 }
+
+#mapid {
+    height: 600px;
+    display: none;
+}

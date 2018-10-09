@@ -10,19 +10,27 @@ setInterval( () => {
 }, 60000);
 
 
-async function initQuery(query, lat, lng, radius) {
+async function initQuery(query, lat, lng, radius, typeRes) {
     try {
         let body = await sendRequest(query, lat, lng, radius);
         let filterList = await filterData(body);
-        let data = await createCsv(filterList);
-        let id = await makeId();
-        dataForUser.push({
-            id,
-            data,
-            time: Date.now()
-        });
 
-        return 'ok_' + id;
+
+        if(typeRes === 'map') {
+            return JSON.stringify(filterList);
+        } else {
+            let data = await createCsv(filterList);
+            let id = await makeId();
+            dataForUser.push({
+                id,
+                data,
+                time: Date.now()
+            });
+
+            return 'ok_' + id;
+
+        }
+
 
     } catch(err) {
         console.error(err);

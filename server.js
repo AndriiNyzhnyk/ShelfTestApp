@@ -28,9 +28,10 @@ app.post('/search', urlEncodedParser, (req, res) => {
     if(!req.body) return res.sendStatus(400);
 
     let body = req.body;
-    fourSquare.initQuery(body.place, body.lat, body.lng, body.radius)
+    fourSquare.initQuery(body.place, body.lat, body.lng, body.radius, body.typeRes)
         .then(value => {
-            res.send(value);
+            // res.send(value);
+            res.json(value);
         });
 });
 

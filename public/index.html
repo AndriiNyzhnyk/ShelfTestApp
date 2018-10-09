@@ -5,6 +5,10 @@
     <title>App</title>
     <link type="text/css" rel="stylesheet" href="/style/normalize.css">
     <link type="text/css" rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+
 </head>
 <body>
     <h1 id="title">Знайди що тобі потрібно !</h1>
@@ -41,8 +45,24 @@
             <label for="v10000">100 км</label>
 
             <br />
+
+            <p>Type response:</p>
+            <input type="radio" name="typeResponse" class="typeResponse" id="typeMap" value="map" checked/>
+            <label for="typeMap">Map</label>
+
+            <input type="radio" name="typeResponse" class="typeResponse" id="typeCsv" value="csv" />
+            <label for="typeCsv">Csv</label>
+            <br />
+
             <input type="submit" value="Надіслати" id="send"/>
         </form>
+
+
+    <div id="mapid"></div>
+
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+            integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+            crossorigin=""></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
@@ -50,7 +70,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-sham.min.js"></script>
-    <script src="https://wzrd.in/standalone/es7-shim@latest"></script>
+    <!--<script src="https://wzrd.in/standalone/es7-shim@latest"></script>-->
     <script src="/js/main.js"></script>
 </body>
 </html>
