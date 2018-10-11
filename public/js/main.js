@@ -1,5 +1,6 @@
 $(document).ready( () => {
     let position;
+    let statusInitMap = false;
 
 
     $('#search').submit( (e) => {
@@ -99,7 +100,8 @@ $(document).ready( () => {
 
             await addMarker(map, 'You', position.lat, position.lng, true);
 
-            $('#mapid').show();
+            // $('#mapid').show();
+            // document.getElementById('mapid').style.height = 600 + 'px';
 
         } catch(e) {
             console.error(e);
@@ -109,8 +111,15 @@ $(document).ready( () => {
 
     function createMap(lat, lng) {
         return new Promise( resolve => {
+            statusMapArea();
+
             let myMap = L.map('mapid').setView([lat, lng], 15);
-            L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(myMap);
+            // L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(myMap);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(myMap);
+            statusInitMap = true;
+
             resolve(myMap);
         });
     }
@@ -132,6 +141,16 @@ $(document).ready( () => {
 
             resolve(marker);
         });
+    }
+
+    function statusMapArea() {
+        if(statusInitMap === true) {
+            let map = document.createElement('div');
+            map.id = 'mapid';
+            document.body.replaceChild(map, document.getElementById('mapid'));
+
+            statusInitMap = false;
+        }
     }
 
 });
