@@ -102,6 +102,8 @@ $(document).ready( () => {
             // $('#mapid').show();
             // document.getElementById('mapid').style.height = 600 + 'px';
 
+            changePositionMap();
+
         } catch(e) {
             console.error(e);
         }
@@ -150,6 +152,12 @@ $(document).ready( () => {
 
             statusInitMap = false;
         }
+    }
+
+    function changePositionMap() {
+        let map = document.getElementById('mapid');
+        map.style.position = 'relative';
+        map.style.zIndex = 0;
     }
 
 });
