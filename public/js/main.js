@@ -93,9 +93,8 @@ $(document).ready( () => {
         try {
             let map = await createMap(position.lat, position.lng);
 
-
-            for(let i = 0; i < data.length; i++) {
-                await addMarker(map, data[i].name, data[i].lat, data[i].lng);
+            for await (let item of data) {
+                addMarker(map, item.name, item.lat, item.lng);
             }
 
             await addMarker(map, 'You', position.lat, position.lng, true);
