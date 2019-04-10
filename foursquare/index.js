@@ -48,7 +48,7 @@ function sendRequest(query, lat, lng, radius) {
                 ll: `${lat},${lng}`,
                 query: `${query}`,
                 radius: `${radius}`,
-                v: '20170801',
+                v: '20180323',
                 limit: 50
             }
         };
