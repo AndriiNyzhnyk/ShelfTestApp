@@ -1,7 +1,8 @@
 const request = require('request');
-const secret = require('./secret');
 const json2csv = require('json2csv');
 const crypto = require('crypto');
+
+const { CLIENT_ID, CLIENT_SECRET  } = process.env;
 
 let dataForUser = [];
 
@@ -43,8 +44,8 @@ function sendRequest(query, lat, lng, radius) {
             url: 'https://api.foursquare.com/v2/venues/explore',
             method: 'GET',
             qs: {
-                client_id: `${secret.clientId}`,
-                client_secret: `${secret.clientSecret}`,
+                client_id: CLIENT_ID,
+                client_secret: CLIENT_SECRET,
                 ll: `${lat},${lng}`,
                 query: `${query}`,
                 radius: `${radius}`,

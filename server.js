@@ -1,4 +1,5 @@
-// const serverless = require('serverless-http');
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const fourSquare = require('./foursquare');
